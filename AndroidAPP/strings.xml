@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Sensor Data Collection</string>
+    <string name="edit_message">Enter a message</string>
+    <string name="button_send">Send</string>
+    <string name="button_set_ip_port">连接</string>
+    <string name="button_start_monitoring">开始监测（暂时没用）</string>
+    <string name="tv_ip">输入服务器ip</string>
+    <string name="tv_port">输入端口号</string>
+    <string name="text_ip_tip">服务器ip地址</string>
+    <string name="text_port_tip">服务器端口</string>
+    <string name="delbutton">删除旧的</string>
+    <string name="writeswitchstring">本地写入</string>
+    <string name="GetFileName">输入文件名</string>
+    <string name="defaultfilename">sensordata</string>
+</resources>
