@@ -46,24 +46,17 @@ if __name__ == '__main__':
 	print('Loading dataset')
 	x_read, y_read = load_dataset(featurePaths, labelPaths)
 	print(len(x_read), len(y_read))
-	print('Spliting dataset')
 	knnreport = []
 	dtreport = []
-	for _ in range(0, 1):
+	for _ in range(0, 10):
+		print('Spliting dataset')
+		x_train, x_test, y_train, y_test = train_test_split(x_read, y_read, test_size=0.1)
 
-		x_train, x_test, y_train, y_test = train_test_split(x_read, y_read, test_size=1.0, )
-
-		print('Dataset loaded')
-		print('Feature len = ', len(x_train[0]))
-		print('Train len = ', len(x_train))
-		print('Test len = ', len(x_test))
-
-		# print("Start training clf")
-		# clf = SVC(gamma='auto')
-		# clf.fit(x_train, y_train)
-		# with open('svm_model', 'wb') as fw:
-		# 	pickle.dump(clf, fw)
-		# print("Training done!")
+		if _ == 0:
+			print('Dataset loaded')
+			print('Feature len = ', len(x_train[0]))
+			print('Train len = ', len(x_train))
+			print('Test len = ', len(x_test))
 
 		print("Start training knn")
 		knn = KNeighborsClassifier().fit(x_train, y_train)
@@ -74,29 +67,18 @@ if __name__ == '__main__':
 		dt = DecisionTreeClassifier().fit(x_train, y_train)
 		with open('dt_model', 'wb') as fw:
 			pickle.dump(dt, fw)
-		# joblib.dump(dt, "dt_model")
 		print("Training done!")
-		# print("Start training Bayes")
-		# gnb = GaussianNB().fit(x_train, y_train)
-		# with open('gnb_model', 'wb') as fw:
-		# 	pickle.dump(gnb, fw)
-		# print("Training done!")
 
 		print('Predicting')
-		# answer_clf = clf.predict(x_test)
 		answer_knn = knn.predict(x_test)
 		answer_dt = dt.predict(x_test)
-		# answer_gnb = gnb.predict(x_test)
 		print("Prediction done")
 		print('The', _, '-th train and test report:')
 		# 计算准确率与召回率
-		# print("\n\nThe classifiction report for clf:")
-		# print(classification_report(y_test, answer_clf))
-		print("\n\nThe classifiction report for knn:")
+		print('=================================')
+		print("The classifiction report for knn:")
 		knnreport.append(classification_report(y_test, answer_knn))
 		print(knnreport[-1])
-		print("\n\nThe classifiction report for dt:")
+		print("The classifiction report for dt:")
 		dtreport.append(classification_report(y_test, answer_dt))
 		print(dtreport[-1])
-		# print("\n\nThe classifiction report for gnb:")
-		# print(classification_report(y_test, answer_gnb))
