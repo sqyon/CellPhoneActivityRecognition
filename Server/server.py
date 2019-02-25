@@ -148,8 +148,8 @@ class Udpsocket():
 	def plot(self):
 		while True:
 			if self.plotbuffer > 200:
-				plt.plot(self.ahqueue, c=(1, 0, 0))  # red
-				plt.plot(self.avqueue, c=(0, 1, 0))  # green
+				plt.plot(GetFeature.running_mean(self.ahqueue), c=(1, 0, 0))  # red
+				plt.plot(GetFeature.running_mean(self.avqueue), c=(0, 1, 0))  # green
 				plt.title(Counter(self.dtanswer).most_common(1), fontsize=10)
 				plt.axis([0, 100, -4.0, 4.0])
 				plt.show()
