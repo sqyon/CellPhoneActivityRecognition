@@ -1,5 +1,6 @@
 # 基于手机传感器的行为识别
 本项目为服务器后端，安卓前端在 https://github.com/sqyon/CellPhoneActivityRecognition
+
 使用安卓手机的传感器获取加速度与重力加速度，并计算出水平与垂直加速度，提取特征后使用决策树进行分类。
 # 训练用数据集
 https://github.com/mmalekzadeh/motion-sense
